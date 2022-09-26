@@ -6,7 +6,8 @@ import { API_KEY } from "@env";
 export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>What movies do you wanna watch?</Text>
+      <Text style={styles.welcome}>Welcome to BestMovieDB</Text>
+      <Text style={styles.text}>What movies do you wanna see?</Text>
       <View style={styles.naviButtons}>
         <Button
           title="Popular Movies"
@@ -38,20 +39,25 @@ const styles = StyleSheet.create({
   },
 
   text: {
+    marginTop: "2%",
+    marginBottom: "1%",
     textAlign: "center",
     fontSize: 25,
   },
 
   naviButtons: {
     flexDirection: "row",
-    justifyContent: "center",
-    paddingHorizontal: -20,
+    justifyContent: "center"
   },
   whiteSpace: {
     marginHorizontal: 15,
   },
+  welcome:{
+    textAlign: "center",
+    fontSize: 45
+  },
 
   title: {
-    fontSize: 26,
+    fontSize: 25,
   },
 });
