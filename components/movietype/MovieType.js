@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { FlatList, SectionList } from "react-native-web";
-import {API_KEY} from "@env"
+import { FlatList, SafeAreaView, SectionList } from "react-native-web";
+import { API_KEY } from "@env";
 
-
-export default function MovieType({ navigation, route } ) {
-
+export default function MovieType({ navigation, route }) {
   const [data, setData] = useState([]);
 
   const { movieType } = route.params;
@@ -33,13 +31,16 @@ export default function MovieType({ navigation, route } ) {
   // returns a flatlist because we only need to render what the user can see.
   // Else it would be too heavy when we load alot of movies.
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
-    </View>
+    <SafeAreaView>
+      <Text style={styles.text}>List of {movieType} movies</Text>
+      <View style={styles.container}>
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -64,13 +65,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "center",
   },
+  text: {
+    textAlign: "center",
+    fontSize: 25,
+  },
   item: {
-    backgroundColor: "#EEE",
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    backgroundColor: "#2196f3",
+    justifyContent: "center",
+    marginVertical: "0.5%",
+    marginHorizontal: "38%",
   },
   title: {
-    fontSize: 32,
+    fontSize: 25,
+    color: "white",
   },
 });
